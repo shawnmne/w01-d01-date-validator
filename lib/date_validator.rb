@@ -71,14 +71,14 @@ def valid_date?(month, day, year)
     retun FALSE
   end
 
-  if month == 2
+  if month == 2         #check for leap years
     if year % 400 == 0
       if day > 29
         return FALSE
       end
     elsif year % 100 == 0
       if day > 28 
-        retun FALSE
+        return FALSE
       end
     elsif year % 4 == 0
       if day > 29 
