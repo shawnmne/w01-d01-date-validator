@@ -18,12 +18,79 @@ def valid_date?(month, day, year)
   if year < 1880 || year > 2280 #check to make sure year falls within range
   	return FALSE
   end
+
   if month < 1 || month > 12  #check to make sure month falls within possibilities
   	retun FALSE
   end
+
   if day < 1 									#check to make sure at least is the beginning of the month
   	return FALSE
   end
 
+  if month == 1 && day > 31
+    return FALSE
+  end
+
+  if month == 3 && day > 31
+    return FALSE
+  end
+
+  if month == 4 && day > 30
+    return FALSE
+  end
+
+  if month == 5 && day > 31
+    return FALSE
+  end
+
+  if month == 6 && day > 30
+    return FALSE
+  end
+
+  if month == 7 && day > 31
+    return FALSE
+  end
+
+  if month == 8 && day > 31
+    return FALSE
+  end
+
+  if month == 9 && day > 30
+    retun FALSE
+  end
+
+  if month == 10 && day > 31
+    return FALSE
+  end
+
+  if month == 11 && day > 30
+    return FALSE
+  end
+
+  if month == 12 && day > 31
+    retun FALSE
+  end
+
+  if month == 2
+    if year % 400 == 0
+      if day > 29
+        return FALSE
+      end
+    elsif year % 100 == 0
+      if day > 28 
+        retun FALSE
+      end
+    elsif year % 4 == 0
+      if day > 29 
+        return FALSE
+      end
+    else 
+      if day > 28
+        return FALSE
+      end
+    end
+  end
+         
+  
   return true
 end
