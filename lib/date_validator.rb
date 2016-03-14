@@ -15,6 +15,15 @@
 # This method should, in its final form, not do any output.
 
 def valid_date?(month, day, year)
-  #write your method here
+  if year < 1880 || year > 2280 #check to make sure year falls within range
+  	return FALSE
+  end
+  if month < 1 || month > 12  #check to make sure month falls within possibilities
+  	retun FALSE
+  end
+  if day < 1 									#check to make sure at least is the beginning of the month
+  	return FALSE
+  end
+
   return true
 end
