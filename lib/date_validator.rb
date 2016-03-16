@@ -51,13 +51,13 @@ end
 def valid_day_february?(month, day, year)
   pass_test = TRUE    
   if month == 2 && !((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
-      if day > 28
+      if day > 28 || day < 1
         pass_test = FALSE
       end
   end
   
   if month == 2  && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
-      if day > 29
+      if day > 29 || day < 1
         pass_test = FALSE
       end 
   end 
