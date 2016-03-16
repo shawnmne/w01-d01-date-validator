@@ -14,33 +14,42 @@
 #
 # This method should, in its final form, not do any output.
 
-def valid_date?(month, day, year)
-  pass_test = TRUE 
-       
-  if year < 1880 || year > 2280 #check to make sure year falls within range
+
+def valid_year?(year)
+  pass_test = TRUE    
+  if year < 1880 || year > 2280 
     pass_test = FALSE
   end
+  return pass_test
+ end
+     
 
-  if month < 1 || month > 12  #check to make sure month falls within possibilities
+def valid_month?(month)
+  pass_test = TRUE    
+  if month < 1 || month > 12 
     pass_test = FALSE
   end
+  return pass_test
+end
 
-  if day < 1                  #check to make sure at least is the beginning of the month
-    pass_test = FALSE
-  end
-
+def valid_day?(month, day)
+  pass_test = TRUE  
   if month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12
-    if day > 31 
+    if day > 31 || day < 1
       pass_test = FALSE
     end  
   end
 
   if month == 4 || month == 6 || month == 9 || month == 11
-    if day > 30 
+    if day > 30 || day < 1
       pass_test = FALSE
     end
   end
+  return pass_test
+end  
   
+def valid_day_february?(month, day, year)
+  pass_test = TRUE    
   if month == 2 && !((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
       if day > 28
         pass_test = FALSE
@@ -52,9 +61,13 @@ def valid_date?(month, day, year)
         pass_test = FALSE
       end 
   end 
-
-
-  
   return pass_test
-end       
+end
 
+def valid_date?(month, day, year)
+ pass_year = valid_year?(year)
+ pass_month = valid_month?(month)
+ pass_day = valid_day?(month, day)
+ pass_day_february = valid_day_february?(month, day, year)
+  return pass_year && pass_month && pass_day && pass_day_february
+end 
